@@ -1,0 +1,20 @@
+service: getamped-scraper
+
+custom:
+  serverless-offline:
+    httpPort: 4000
+    websocketPort: 4001
+    lambdaPort: 4002
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: ap-northeast-2
+
+functions:
+  handler:
+    handler: index.handler
+    events:
+      - schedule: rate(1 hour)
+
+plugins:
+  - serverless-offline
